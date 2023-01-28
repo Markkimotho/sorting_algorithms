@@ -3,7 +3,31 @@
 void merge_two(int *subarr, int *buff, size_t front, size_t mid,
 		size_t back);
 void merge_recursion(int *subarr, int *buff, size_t front, size_t back);
-void merge_sort(int *array, size_t size);
+
+/**
+ * merge_sort - Sort an array of integers in ascending
+ *              order using the merge sort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ *
+ * Description: Implements the top-down merge sort algorithm.
+ */
+void merge_sort(int *array, size_t size)
+{
+	int *buff;
+
+	if (array == NULL || size < 2)
+		return;
+
+	buff = malloc(sizeof(int) * size);
+	if (buff == NULL)
+		return;
+
+	merge_recursion(array, buff, 0, size);
+
+	free(buff);
+}
+
 
 /**
  * merge_two - Sort a subarray of integers.
@@ -56,28 +80,3 @@ void merge_recursion(int *subarr, int *buff, size_t front, size_t back)
 		merge_two(subarr, buff, front, mid, back);
 	}
 }
-
-/**
- * merge_sort - Sort an array of integers in ascending
- *              order using the merge sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
- *
- * Description: Implements the top-down merge sort algorithm.
- */
-void merge_sort(int *array, size_t size)
-{
-	int *buff;
-
-	if (array == NULL || size < 2)
-		return;
-
-	buff = malloc(sizeof(int) * size);
-	if (buff == NULL)
-		return;
-
-	merge_recursion(array, buff, 0, size);
-
-	free(buff);
-}
-
