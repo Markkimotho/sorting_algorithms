@@ -1,4 +1,4 @@
-#ifndef SORT_H /*Start of header guards.*/
+#ifndef SORT_H 
 #define SORT_H
 
 #include <stddef.h>
